@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDeiUXBWVMcXIdW-ZKCpgopbVPEP1gMggw"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="container login-card">
+                    <div class="card ">
+                        <div class="card-block">
+                            <h4 class="card-title">TaskGerbil User Login</h4>
+                            <form id="signin-form">
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input class="form-control" type="email" id="email-user" placeholder="name@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input class="form-control" type="password" id="password-user">
+                                </div>
+                                <button type="submit" class="login-signup" id="login-btn">Login</button>
+                            </form>
+                            <br>
+                            <p>
+                                <a href="#register" class="user-login-register" id="user-register">Register</a> |
+                                <a href="#" id="user-forgotpw">Forgot Password</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="container register-card ">
+            <div class="card ">
+                <div class="card-block">
+                    <h4 class="card-title">TaskGerbil User Registration</h4>
+                    <form id="signin-form">
+                        <div class="form-group">
+                            <label for="first-name">First Name:</label>
+                            <input class="form-control" type="text" id="first-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name:</label>
+                            <input class="form-control" type="text" id="last-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">Skills:</label>
+                            <input class="form-control" type="text" id="skills">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input class="form-control" type="email" id="email-register" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input class="form-control" type="password" id="password-register">
+                        </div>
+                        <button type="submit" class="login-signup" id="register-btn">Register</button>
+                    </form>
+                    <a href="#login" class="user-login-register" id="user-login">Login</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- DIV HIDES CONTENT -->
+    <div class="login-cover"></div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <a class="navbar-brand" href="index.html"><b>TaskGerbil</b> | User Dashboard</a>
+        <button class="btn btn-outline-success my-2 my-sm-0 navbar-toggler-right" type="submit" id="user-signout">Sign Out </button>
+    </nav>
+    <div class="container">
+        <h3>Welcome <span id="user-name"></span></h3>
+
+        <table class="table">
+            <thead class="thead-default">
+                <th>Open Issue Feed<span id="issue-head"></span></th>
+            </thead>
+            <tbody id="issue-table">
+
+			</tbody>
+			<thead class="thead-default">
+                <th>Accepted Queue<span id="accepted-thead"></span></th>
+            </thead>
+            <tbody id="accepted-table">
+				
+            </tbody>
+        </table>
+        <!-- temp Div for testing -->
+        <div class="temp-div"></div>
+        <!-- GOOGLE MAPS MAP -->
+        <!-- <div id="map_canvas" style="width:600px; height:500px"> -->
+        </div>
+        <!-- _______________________________________________________________ -->
+        <!-- Modal Stuff -->
+        <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            
+                        
+                        <!-- content goes here -->
+                        <div class="first-name"></div>
+                        <div class="email"></div>
+                        <div class="phone"></div>
+                        <div class="address"></div>
+                        <div class="image"></div>
+                        <div class="row">
+                            
+                        
+                        <div id="map_canvas" style="width: 500px; height: 200px"></div>
+                    </div>
+
+                    </div>
+                    
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+        
+    <script src="assets/javascript/logic.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+</html>
